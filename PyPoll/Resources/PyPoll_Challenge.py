@@ -12,8 +12,7 @@ csv_file = os.path.join("election_data.csv")
 # initialize  
 
 totalVotes = 0  
-candidates = dict()
-key = ()
+candidates = {}
 count = 0  
 votes = 0 
 
@@ -21,7 +20,7 @@ votes = 0
 # open with reader module and set resources
 with open(csv_file,'r') as file:        
   reader = csv.reader(file)
-  next(reader) #loop starting point 
+  next(reader) #loop starting point ls
 
 # Total number of votes
   for row in reader:  
@@ -38,19 +37,17 @@ with open(csv_file,'r') as file:
     else:
       candidates[candidate] = 1
 
-  print(candidates, votes)
+ # print(candidates)
+ 
 
-  print(f"Total Votes: {totalVotes}")
+  ##### DO NOT  WITH ANYTHING ABOVE HERE
 
-  ##### DO NOT FUCK WITH ANYTHING ABOVE HERE #####
+# Print vote counts for each candidatecd instructions
+  # for candidate, count in candidates.items():
+    # print(candidate, count)
+    #  print(f"Total Votes: {totalVotes}")
 
-# Print vote counts for each candidate
-  for candidate, count in candidates.items():
-    print(candidate, votes)
-    # print(f"{candidate}: {count} ({count/totalVotes*100:.2f}%)")
-
-    # Print election results summary
-    print("Election Results")
+  print("Election Results")
   print("-------------------------")
   print(f"Total Votes: {totalVotes}")
   print("-------------------------")
@@ -58,15 +55,20 @@ with open(csv_file,'r') as file:
 # Calculate percentage of votes for each candidate and print results
   for candidate, count in candidates.items():
     percent_of_vote = count/totalVotes * 100
-  print(f"{candidate}: {percent_of_vote:.2f}% ({count})")
+    print(f"{candidate}: {percent_of_vote:.2f}% ({count})")
 
-  print("-------------------------")
+
 
 # Determine the winner and print result
-  winner = max(candidates, key=candidates.get)
-  print(f"Winner: {winner}")
 
+  winner = max(candidates, key=candidates.get)
+
+  
   print("-------------------------")
+  print(f"Winner: {winner}")
+  print("-------------------------")
+ 
+
 
 
         
