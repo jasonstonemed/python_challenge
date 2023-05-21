@@ -12,7 +12,7 @@ csv_file = os.path.join("budget_data.csv")
 total_months = 0
 
 #  open file, skip header, count months
-with open('budget_data.csv') as file:
+with open(csv_file,'r') as file:
     reader = csv.reader(file) # converts csv to strings - establishes column header row
     next(reader)  # skip header row
 
@@ -140,14 +140,10 @@ with open('budget_data.csv', 'r') as csvfile:
                 greatest_profit_increase = profit_change
                 greatest_profit_increase_month = month
 
-            print(greatest_profit_increase_month)
-
-        
+            print(greatest_profit_increase_month)        
 
         # Update the previous profit for the next iteration
-        previous_profit = profit
-
-        
+        previous_profit = profit        
 
     # Print the results
     print("Financial Analysis")
@@ -155,8 +151,8 @@ with open('budget_data.csv', 'r') as csvfile:
     print(f"Total Months: {total_months}")
     print(f"Total Profit: ${total_profit}")
     print(f"Average Change: ${round((total_profit-previous_profit)/(total_months-1),2)}")
-    print(f"Greatest Decrease in Profits: {greatest_profit_decrease_month} (${greatest_profit_decrease})")
     print(f"Greatest Increase in Profits: {greatest_profit_increase_month} (${greatest_profit_increase})")
+    print(f"Greatest Decrease in Profits: {greatest_profit_decrease_month} (${greatest_profit_decrease})")
 
 
  
