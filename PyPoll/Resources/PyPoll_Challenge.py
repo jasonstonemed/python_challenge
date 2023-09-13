@@ -24,8 +24,7 @@ with open(csv_file,'r') as file:
 
 # Total number of votes
   for row in reader:  
-    totalVotes += 1  # do NOT change this code: file will close
-
+    totalVotes += 1  
 # print(f"Total Votes: {totalVotes}")
  
     candidate = row[2]
