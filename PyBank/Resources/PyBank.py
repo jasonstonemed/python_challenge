@@ -7,8 +7,7 @@ import os
 # set path
 csv_file = os.path.join("budget_data.csv")
                      
-# initialize
-
+# initialize months
 total_months = 0
 
 #  open file, skip header, count months
@@ -19,7 +18,7 @@ with open(csv_file,'r') as file:
     #total number of months in data
     total_months += 1
 
-    # print(f'The number of months in the file is: {total_months}')ls
+    # print(f'The number of months in the file is: {total_months}')
 
 
 ##### The net total amount of "Profit/Losses" over {months} #####
@@ -60,8 +59,6 @@ average_change = total_change / num_changes #sets variable
 # print(f'The changes in "Profit/Losses" over {total_months} months is: ${total_change}')
 # print(f'The average of those changes is: ${average_change:.2f}')
 
-
-
 ##### The greatest increase in profits (date and amount) over the entire period #####
 
 import csv
@@ -97,9 +94,7 @@ with open('budget_data.csv', 'r') as csvfile:
                 greatest_profit_increase_month = month
 
         # Update the previous profit for the next iteration
-        previous_profit = profit
-
-    
+        previous_profit = profit    
 
 ##### greatest decrease in profits (date and amount) over the entire period #####
 
