@@ -23,9 +23,6 @@ with open(csv_file,'r') as file:
 
 ##### The net total amount of "Profit/Losses" over {months} #####
 
-#prepare data
-import csv
-
 #open and set loop
 with open('budget_data.csv', 'r') as file:
     reader = csv.DictReader(file) #applying DictReader
@@ -36,9 +33,6 @@ with open('budget_data.csv', 'r') as file:
 print(f'The net total amount of "Profit/Losses" over {total_months} months is: ${total_profit_loss}')
 
 ##### The changes in "Profit/Losses" over the entire period, and then the average of those changes
-
-# Prepare data
-import csv
 
 with open('budget_data.csv', 'r') as file: #open and set loop
     reader = csv.DictReader(file) # header row
@@ -56,12 +50,10 @@ with open('budget_data.csv', 'r') as file: #open and set loop
 #calculate average daily change
 average_change = total_change / num_changes #sets variable
 
-# print(f'The changes in "Profit/Losses" over {total_months} months is: ${total_change}')
-# print(f'The average of those changes is: ${average_change:.2f}')
+print(f'The changes in "Profit/Losses" over {total_months} months is: ${total_change}')
+print(f'The average of those changes is: ${average_change:.2f}')
 
 ##### The greatest increase in profits (date and amount) over the entire period #####
-
-import csv
 
 with open('budget_data.csv', 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') #takes out commas from data
@@ -97,8 +89,6 @@ with open('budget_data.csv', 'r') as csvfile:
         previous_profit = profit    
 
 ##### greatest decrease in profits (date and amount) over the entire period #####
-
-import csv
 
 with open('budget_data.csv', 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
