@@ -13,14 +13,12 @@ total_months = 0
 
 #  open file, skip header, count months
 with open(csv_file,'r') as file:
-    reader = csv.reader(file) # converts csv to strings - establishes column header row
-    next(reader)  # skip header row
+    reader = csv.reader(file) 
+    next(reader)  
 
     #total number of months in data
-    total_months += 1
-
-    # print(f'The number of months in the file is: {total_months}')ls
-
+    for i in reader:
+        total_months += 1
 
 ##### The net total amount of "Profit/Losses" over {months} #####
 
@@ -29,10 +27,10 @@ import csv
 
 #open and set loop
 with open('budget_data.csv', 'r') as file:
-    reader = csv.DictReader(file) #applying DictReader
-    total_profit_loss = 0 # starting point
-    for row in reader: # identify loop type
-        total_profit_loss += int(row['Profit/Losses']) # adds cell values for each row through the loop
+    reader = csv.DictReader(file) #applying DictReader uses string columns instead of indices
+    total_profit_loss = 0 
+    for row in reader:
+        total_profit_loss += int(row['Profit/Losses']) 
 
 print(f'The net total amount of "Profit/Losses" over {total_months} months is: ${total_profit_loss}')
 
@@ -41,34 +39,54 @@ print(f'The net total amount of "Profit/Losses" over {total_months} months is: $
 # Prepare data
 import csv
 
-with open('budget_data.csv', 'r') as file: #open and set loop
-    reader = csv.DictReader(file) # header row
-    first_row = next(reader)  # skips the first row
-    previous_profit_loss = int(first_row['Profit/Losses']) # converts first row to numbers
-    total_change = 0 # starting pt for total change
-    num_changes = 0 #starting pt for num changes
+with open('budget_data.csv', 'r') as file: 
+    reader = csv.DictReader(file) 
+    first_row = next(reader) 
+    #initialize
+    previous_profit_loss = int(first_row['Profit/Losses']) 
+    total_change = 0 
+    # num_changes = 0 
+
     for row in reader:
-        current_profit_loss = int(row['Profit/Losses']) #changes rows to an integer for counting
-        change = current_profit_loss - previous_profit_loss #defines change variable
-        total_change += change #counting mechanism
-        num_changes += 1 #counting mechanism
-        previous_profit_loss = current_profit_loss #starts loop again
+        current_profit_loss = int(row['Profit/Losses']) 
+
+        #calculate change from previous month
+        change = current_profit_loss - previous_profit_loss
+
+        #update total change and number of changes
+        total_change += change
+        # num_changes += 1
+
+        #update previous profit for nect iteration
+        previous_profit_loss = current_profit_loss
 
 #calculate average daily change
-average_change = total_change / num_changes #sets variable
+average_change = total_change / total_months
+# num_changes
+print(f'The average change in "Profit/Losses" over {total_months} months is: ${average_change}')
+    
 
-# print(f'The changes in "Profit/Losses" over {total_months} months is: ${total_change}')
-# print(f'The average of those changes is: ${average_change:.2f}')
+#         #calculate change from previous month
+#         change = current_profit_loss - previous_profit_loss 
 
+#         #update total change and number of changes
+#         total_change += change 
+#         num_changes += 1 
 
+#         #update previous profit for nect iteration
+#         previous_profit_loss = current_profit_loss 
 
-##### The greatest increase in profits (date and amount) over the entire period #####
+# #calculate average daily change
+# average_change = total_change / num_changes
+# print(average_change)
+
+# ##### The greatest increase in profits (date and amount) over the entire period #####
 
 import csv
 
 with open('budget_data.csv', 'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',') #takes out commas from data
-    next(csvreader)  # skip header row
+    csvreader = csv.reader(csvfile, delimiter=',') 
+    next(csvreader) 
 
     # Set variables
     total_months = 0
@@ -150,9 +168,9 @@ with open('budget_data.csv', 'r') as csvfile:
     print("------------------")
     print(f"Total Months: {total_months}")
     print(f"Total Profit: ${total_profit}")
-    print(f"Average Change: ${round((total_profit-previous_profit)/(total_months-1),2)}")
-    print(f"Greatest Increase in Profits: {greatest_profit_increase_month} (${greatest_profit_increase})")
-    print(f"Greatest Decrease in Profits: {greatest_profit_decrease_month} (${greatest_profit_decrease})")
+    print(f'Average change in Profit/Losses over {total_months} months is: ${round((average_change), 2)}')
+    print(f"Greatest Increase in Profits: {greatest_profit_increase_month} ${greatest_profit_increase}")
+    print(f"Greatest Decrease in Profits: {greatest_profit_decrease_month} ${greatest_profit_decrease}")
 
 
  
