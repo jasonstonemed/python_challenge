@@ -1,6 +1,5 @@
 # PyPoll Challenge 
 
-
 ##### Total Votes counted
 # import modules
 import csv
@@ -24,28 +23,20 @@ with open(csv_file,'r') as file:
 
 # Total number of votes
   for row in reader:  
-    totalVotes += 1  # do NOT change this code: file will close
-
-# print(f"Total Votes: {totalVotes}")
- 
+    totalVotes += 1  
+  print(f"Total Votes: {totalVotes}")
+  
+ # Tally votes for each candidate
+    # initialize
     candidate = row[2]
 
-  
     if candidate in candidates:
       candidates[candidate] += 1
 
     else:
       candidates[candidate] = 1
 
- # print(candidates)
- 
-
-  ##### DO NOT  WITH ANYTHING ABOVE HERE
-
-# Print vote counts for each candidatecd instructions
-  # for candidate, count in candidates.items():
-    # print(candidate, count)
-    #  print(f"Total Votes: {totalVotes}")
+   print(candidates) 
 
   print("Election Results")
   print("-------------------------")
@@ -57,13 +48,10 @@ with open(csv_file,'r') as file:
     percent_of_vote = count/totalVotes * 100
     print(f"{candidate}: {percent_of_vote:.2f}% ({count})")
 
-
-
 # Determine the winner and print result
 
   winner = max(candidates, key=candidates.get)
 
-  
   print("-------------------------")
   print(f"Winner: {winner}")
   print("-------------------------")
