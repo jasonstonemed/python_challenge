@@ -15,28 +15,26 @@ candidates = {}
 count = 0  
 votes = 0 
 
-
-# open with reader module and set resources
+# open with reader module 
 with open(csv_file,'r') as file:        
   reader = csv.reader(file)
-  next(reader) #loop starting point ls
+  next(reader) 
 
 # Total number of votes
   for row in reader:  
     totalVotes += 1  
-  print(f"Total Votes: {totalVotes}")
   
  # Tally votes for each candidate
+
     # initialize
     candidate = row[2]
 
+    #count votes for candidate
     if candidate in candidates:
       candidates[candidate] += 1
 
     else:
       candidates[candidate] = 1
-
-   print(candidates) 
 
   print("Election Results")
   print("-------------------------")
@@ -49,7 +47,6 @@ with open(csv_file,'r') as file:
     print(f"{candidate}: {percent_of_vote:.2f}% ({count})")
 
 # Determine the winner and print result
-
   winner = max(candidates, key=candidates.get)
 
   print("-------------------------")
