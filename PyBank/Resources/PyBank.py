@@ -7,7 +7,7 @@ import os
 # set path
 csv_file = os.path.join("budget_data.csv")
                      
-# initialize months
+# initialize variables
 total_months = 0
 
 #  open file, skip header, count months
@@ -57,7 +57,7 @@ with open('budget_data.csv', 'r') as file:
         previous_profit_loss = current_profit_loss 
 
         #calculate average daily change
-        average_change = total_change / total_months
+    average_change = total_change / total_months
 
 ##### The greatest increase in profits (date and amount) over the entire period #####
 
